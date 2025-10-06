@@ -22,14 +22,19 @@ public class AppointmentBook {
     }
     public int findFreeBlock(int period, int duration) {
         int block = 0;
-        for(int i = 0; i < 60; i++)
-            if(isMinuteFree(period, i)) {
+        int start_position = 0;
+        for(int i = 0; i < 60; i++) {
+            if (isMinuteFree(period, i)) {
                 block++;
-                if(block == duration) {
-                    return i - duration + 1;
+                if (block == duration) {
+                    return start_position;
+                    // return i - duration + 1;
                 }
-                else block = 0;
+            } else {
+                block = 0;
+                start_position = i+1;
             }
+        }
         return -1;
     }
     public void reserveBlock(int period, int startMinute, int duration) {
