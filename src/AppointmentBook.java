@@ -45,23 +45,6 @@ public class AppointmentBook {
             schedule[period - 1][i] = false;
         }
     }
-    public static int read() throws FileNotFoundException {
-        int meetings = 0;
-        File f = new File("Schedules.txt");
-        Scanner s = new Scanner(f);
-        String schedule = "";
-        while (s.hasNext()) {
-            while (s.hasNextBoolean()) {
-                schedule += s.nextBoolean() + " ";
-            }
-        }
-        AppointmentBook a = new AppointmentBook(readSchedule(schedule));
-        schedule = "";
-        if (a.makeAppointment(s.nextInt(), s.nextInt(), s.nextInt())){
-            meetings++;
-        }
-        return meetings;
-    }
     public static boolean[][] readSchedule(String lines) {
         Scanner s = new Scanner(lines);
         boolean[][] schedule = new boolean[8][60];
