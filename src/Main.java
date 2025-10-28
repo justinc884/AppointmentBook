@@ -1,24 +1,29 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         boolean[][] schedule = new boolean[8][60];
         AppointmentBook a = new AppointmentBook(schedule);
-        for(int i = 10; i < 15; i++) schedule[1][i] = true;
-        for(int i = 30; i < 45; i++) schedule[1][i] = true;
-        for(int i = 50; i < 60; i++) schedule[1][i] = true;
+        for (int i = 10; i < 15; i++) schedule[1][i] = true;
+        for (int i = 30; i < 45; i++) schedule[1][i] = true;
+        for (int i = 50; i < 60; i++) schedule[1][i] = true;
         a.printPeriod(2);
         System.out.println(a.findFreeBlock(2, 15));
         System.out.println(a.findFreeBlock(2, 9));
         System.out.println(a.findFreeBlock(2, 20));
 
         schedule = new boolean[8][60];
-        for(int i = 25; i < 30; i++) schedule[1][i] = true;
-        for(int i = 0; i < 15; i++) schedule[2][i] = true;
-        for(int i = 41; i < 60; i++) schedule[2][i] = true;
-        for(int i = 5; i < 30; i++) schedule[3][i] = true;
-        for(int i = 44; i < 60; i++) schedule[3][i] = true;
+        for (int i = 25; i < 30; i++) schedule[1][i] = true;
+        for (int i = 0; i < 15; i++) schedule[2][i] = true;
+        for (int i = 41; i < 60; i++) schedule[2][i] = true;
+        for (int i = 5; i < 30; i++) schedule[3][i] = true;
+        for (int i = 44; i < 60; i++) schedule[3][i] = true;
         int period = 2;
         AppointmentBook b = new AppointmentBook(schedule);
-        while(period < 5) {
+        while (period < 5) {
             System.out.println("Period: " + period);
             b.printPeriod(period);
             System.out.println();
